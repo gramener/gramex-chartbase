@@ -1,6 +1,16 @@
-# gramex-chartbase
+# @gramex/chartbase
 
 Base utilities for charts
+
+## Example
+
+```js
+import { layer, getSVG } from "https://cdn.jsdelivr.net/npm/@gramex/chartbase@1";
+// Create a new g.layer under <svg id="chart-svg"> ONLY IF it does not exist
+layer(d3.select("svg#chart-svg"), "g", "layer");
+// Get the viewBox width and height of <svg id="chart-svg">
+const { width, height } = getSVG("svg#chart-svg");
+```
 
 ## Installation
 
@@ -77,9 +87,14 @@ Element can be a selector - it need not be a DOM element. To access the DOM elem
 { el } = getSVG("g#nodes");
 ```
 
+## API
+
+[See API documentation](docs/api.md ":include :type=markdown")
+
 ## Release notes
 
-- 1.0.1: 31 Oct 2023. Initial release
+- 1.0.2: 24 Nov 2023. Fix `getSVG()` width and height calculation
+- 1.0.0: 31 Oct 2023. Initial release
 
 ## Authors
 

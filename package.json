@@ -1,15 +1,16 @@
 {
   "name": "@gramex/chartbase",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Base utilities for charts",
   "type": "module",
   "module": "dist/chartbase.js",
   "scripts": {
+    "docs": "documentation build chartbase.js --markdown-toc false -f md | prettier --parser markdown > docs/api.md",
     "lint": "prettier --write '**/*.{js,mjs,ts,md,json}' && eslint",
     "watch": "esbuild chartbase.js --format=esm --bundle --minify --allow-overwrite --sourcemap --outdir=dist --watch",
     "build-esm": "esbuild chartbase.js --format=esm --bundle --minify --allow-overwrite --sourcemap --outdir=dist",
     "build": "npm run build-esm",
-    "prepublishOnly": "npm run lint && npm run build && npm test",
+    "prepublishOnly": "npm run lint && npm run docs && npm test",
     "pretest": "npm run build",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
@@ -43,6 +44,7 @@
   },
   "devDependencies": {
     "d3-selection": "^3.0.0",
+    "documentation": "^14.0.2",
     "esbuild": "^0.19.2",
     "eslint": "^8.48.0",
     "eslint-plugin-html": "^7.1.0",

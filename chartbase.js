@@ -16,13 +16,20 @@ export const layer = (el, tag, cls, data = (d) => [d]) =>
  * @param {string|HTMLElement} el - The selector or HTML element.
  * @param {number} [width] - The width of the SVG. Optional, fallback to the closest SVG parent.
  * @param {number} [height] - The height of the SVG. Optional, fallback to the closest SVG parent.
- * @returns {Object} Object containing the element, SVG container, and dimensions.
+ * @returns {SVGSize} - `{ el, container, width, height }`.
  */
 export function getSVG(el, width, height) {
   el = typeof el == "string" ? document.querySelector(el) : el;
   // If width and height are not specified, get them from the closest SVG parent.
   const container = el.closest("svg");
-  width = width ?? container?.viewBox?.animVal?.width ?? container?.width?.animVal?.value ?? 0;
-  height = height ?? container?.viewBox?.animVal?.height ?? container?.height?.animVal?.value ?? 0;
+  width = width ?? (container?.viewBox?.animVal?.width || container?.width?.animVal?.value) ?? 0;
+  height = height ?? (container?.viewBox?.animVal?.height || container?.height?.animVal?.value) ?? 0;
+  /**
+   * @typedef {Object} SVGSize
+   * @property {HTMLElement} el - The DOM element passed. If a string selector was passed, this is the result of `document.querySelector`.
+   * @property {HTMLElement} container - The closest SVG element.
+   * @property {number} width - The width of the SVG.
+   * @property {number} height - The height of the SVG.
+   */
   return { el, container, width, height };
 }
