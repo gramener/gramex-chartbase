@@ -6,12 +6,34 @@ Creates a D3.js layer on a given element with specified attributes.
 
 ### Parameters
 
-- `el` **d3.Selection** The parent D3 selection.
-- `tag` **[string][1]** The HTML/SVG tag to create.
-- `cls` **[string][1]** The class to apply to new elements.
-- `data` **[Function][2]** The data-binding function. (optional, default `(d)=>[d]`)
+- `el` **d3.Selection** parent D3 selection.
+- `tag` **[string][1]** HTML/SVG tag to create.
+- `cls` **[string][1]** class to apply to new elements.
+- `data` **[Function][2]** data-binding function. (optional, default `(d)=>[d]`)
 
-Returns **d3.Selection** The D3.js selection.
+### Examples
+
+```javascript
+// Avoid using `.append()` on D3 selections! Use `layer()` instead.
+// AVOID THIS
+el.selectAll("g.nodes").append("g").attr("class", "nodes");
+
+// USE THIS INSTEAD
+import { layer } from "https://cdn.jsdelivr.net/npm/@gramex/chartbase@1";
+layer(el, "g", "layer");
+```
+
+```javascript
+// To specify the data against the appended nodes:
+// AVOID THIS
+el.selectAll("g.nodes").data(data).append("g").attr("class", "nodes");
+
+// USE THIS INSTEAD
+import { layer } from "https://cdn.jsdelivr.net/npm/@gramex/chartbase@1";
+layer(el, "g", "layer", data);
+```
+
+Returns **d3.Selection** layer of `<${tag} class="${cls}">`.
 
 ## getSVG
 
@@ -22,6 +44,28 @@ Retrieves the closest SVG element, along with its width and height
 - `el` **([string][1] | [HTMLElement][3])** The selector or HTML element.
 - `width` **[number][4]?** The width of the SVG. Optional, fallback to the closest SVG parent.
 - `height` **[number][4]?** The height of the SVG. Optional, fallback to the closest SVG parent.
+
+### Examples
+
+```javascript
+// Set the default width and height of a chart based on the closest SVG element:
+const { width, height } = getSVG("#chart-svg");
+```
+
+```javascript
+// If your function accepts an optional width or height parameter, pass it as defaults:
+{ width, height } = getSVG("#chart-svg", width, height);
+```
+
+```javascript
+// If the element is not an SVG (e.g. `g#nodes`), you can access the closest SVG container by:
+{ container } = getSVG("g#nodes");
+```
+
+```javascript
+// el may be a selector or a DOM element. To get the DOM element, use:
+{ el } = getSVG("g#nodes");
+```
 
 Returns **[SVGSize][5]** `{ el, container, width, height }`.
 
