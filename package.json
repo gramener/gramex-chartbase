@@ -1,16 +1,15 @@
 {
   "name": "@gramex/chartbase",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Base utilities for charts",
   "type": "module",
   "module": "dist/chartbase.js",
   "scripts": {
     "docs": "documentation build chartbase.js --markdown-toc false -f md | prettier --parser markdown > docs/api.md",
-    "lint": "prettier --write '**/*.{js,mjs,ts,md,json}' && eslint",
     "watch": "esbuild chartbase.js --format=esm --bundle --minify --allow-overwrite --sourcemap --outdir=dist --watch",
     "build-esm": "esbuild chartbase.js --format=esm --bundle --minify --allow-overwrite --sourcemap --outdir=dist",
     "build": "npm run build-esm",
-    "prepublishOnly": "npm run lint && npm run docs && npm test",
+    "prepublishOnly": "npm run docs && npm test",
     "pretest": "npm run build",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
@@ -20,7 +19,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://code.gramener.com/cto/gramex-chartbase"
+    "url": "git@github.com/gramener/gramex-chartbase"
   },
   "keywords": [
     "gramex",
@@ -32,40 +31,18 @@
   "contributors": [],
   "license": "MIT",
   "bugs": {
-    "url": "https://code.gramener.com/cto/gramex-chartbase/-/issues"
+    "url": "https://github.com/gramener/gramex-chartbase/issues"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "homepage": "https://gramener.com/gramex-chartbase/",
-  "prettier": {
-    "printWidth": 120
-  },
-  "eslintConfig": {
-    "root": true,
-    "parserOptions": {
-      "ecmaVersion": "latest",
-      "sourceType": "module"
-    },
-    "env": {
-      "browser": true,
-      "es2022": true,
-      "jest": true
-    },
-    "plugins": [
-      "html"
-    ],
-    "extends": "eslint:recommended"
-  },
+  "homepage": "https://gramener.github.io/gramex-chartbase/",
   "devDependencies": {
     "d3-selection": "^3.0.0",
-    "documentation": "^14.0.2",
-    "esbuild": "^0.19.2",
-    "eslint": "^8.48.0",
-    "eslint-plugin-html": "^7.1.0",
+    "documentation": "^14.0.3",
+    "esbuild": "^0.23.1",
     "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "prettier": "^3.0.3"
+    "jest-environment-jsdom": "^29.7.0"
   }
 }
