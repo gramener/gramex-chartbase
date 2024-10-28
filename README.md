@@ -42,6 +42,7 @@ Use via CDN as an ES Module:
 
 ## Release notes
 
+- 1.0.4: 28 Oct 2024. Deploy at gramex-chartbase.straive.app ensure <https://cdn.jsdelivr.net/npm/@gramex/chartbase@1> works
 - 1.0.3: 18 Aug 2024. Security update
 - 1.0.2: 24 Nov 2023. Fix `getSVG()` width and height calculation
 - 1.0.0: 31 Oct 2023. Initial release
