@@ -14,25 +14,39 @@ const { width, height } = getSVG("svg#chart-svg");
 
 ## Installation
 
-Install via `npm`:
+Add this to your script:
+
+```js
+import { layer, getSVG } from "@gramex/chartbase";
+```
+
+To use via CDN, add this to your HTML file:
+
+```html
+<script type="importmap">
+  {
+    "imports": {
+      "@gramex/chartbase": "https://cdn.jsdelivr.net/npm/@gramex/chartbase@1/dist/chartbase.js"
+    }
+  }
+</script>
+```
+
+To use locally, install via `npm`:
 
 ```bash
 npm install @gramex/chartbase
 ```
 
-Use locally as an ES module:
+... and add this to your HTML file:
 
 ```html
-<script type="module">
-  import chartbase from "./node_modules/@gramex/chartbase/dist/chartbase.js";
-</script>
-```
-
-Use via CDN as an ES Module:
-
-```html
-<script type="module">
-  import chartbase from "https://cdn.jsdelivr.net/npm/@gramex/chartbase@1";
+<script type="importmap">
+  {
+    "imports": {
+      "@gramex/chartbase": "./node_modules/@gramex/chartbase/dist/chartbase.js"
+    }
+  }
 </script>
 ```
 
